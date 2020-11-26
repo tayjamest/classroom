@@ -42,4 +42,12 @@ public class AttendanceController {
         return this.attendanceService.getMany();
     }
 
+    @GET
+    @Consumes("application/vnd.classroom.report-v1.0+json")
+    @Produces("application/vnd.classroom.report-v1.0+json")
+    @RequestMapping("/report")
+    public Report getAttendance(@RequestBody Report report) {
+        return this.attendanceService.generateReport(report);
+    }
+
 }

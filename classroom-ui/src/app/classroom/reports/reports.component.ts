@@ -4,26 +4,27 @@ import {Student} from '../service/student';
 import {StudentService} from '../service/student.service';
 import {Subject} from "../service/subject";
 import { IMultiSelectOption } from 'ngx-bootstrap-multiselect';
-import {Attendance} from "../service/attendance";
-import {arrayify} from "tslint/lib/utils";
-
+import {Report} from "../service/report";
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'attendance-student',
-  templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.less'],
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.less'],
 })
-export class AttendanceComponent implements OnInit {
+export class ReportsComponent implements OnInit {
 
 
-  public attendanceForm: FormGroup;
+  public reportsForm: FormGroup;
   public students: Student[] = [];
   public subjects: Subject[] = [];
+  public reportToDisplay: Report;
+  public studentToDisplay: Student = new Student();
+  public subjectToDisplay: Subject = new Subject();
 
   studentOption: IMultiSelectOption[] = [];
   subjectOption: IMultiSelectOption[] = [];
+  monthOption: IMultiSelectOption[] = [];
   dropdownSetting: any;
-  selectedStudents: any = [];
 
   constructor(private formBuilder: FormBuilder,
               private studentService: StudentService) {
@@ -34,6 +35,21 @@ export class AttendanceComponent implements OnInit {
     this.dropdownSetting = {
       selectionLimit: 1,
     };
+    this.monthOption = [
+      {id: 1, name: 'January'},
+      {id: 2, name: 'February'},
+      {id: 3, name: 'March'},
+      {id: 4, name: 'April'},
+      {id: 5, name: 'May'},
+      {id: 6, name: 'June'},
+      {id: 7, name: 'July'},
+      {id: 8, name: 'August'},
+      {id: 9, name: 'September'},
+      {id: 10, name: 'October'},
+      {id: 11, name: 'November'},
+      {id: 12, name: 'December'}
+      ];
+
     this.getStudents();
     this.getSubjects();
   }
@@ -60,23 +76,23 @@ export class AttendanceComponent implements OnInit {
   }
 
   public save(): void {
-    this.selectedStudents.forEach((item) => {
-      const attendance: Attendance = new Attendance();
+    const report: Report = new Report();
 
-      attendance.date = this.attendanceForm.controls.date.value;
-      attendance.subjectId = this.attendanceForm.controls.subject.value[0];
+    report.subjectId = this.reportsForm.controls.subject.value[0];
+    report.studentId = this.reportsForm.controls.student.value[0];
 
-      attendance.studentId = item;
-
-      this.studentService.saveAttendance(attendance).subscribe((val) => {
-      })
+    this.studentService.getReport(report).subscribe((val) => {
+      this.reportToDisplay = val;
+      this.studentToDisplay = this.students.filter((student) => student.id === val.studentId)[0];
+      this.subjectToDisplay = this.subjects.filter((subject) => subject.id === val.subjectId)[0];
+      console.log(this.reportToDisplay);
     });
- this.attendanceForm.reset();
+    this.reportsForm.reset();
   }
 
   private buildForm(): void {
-    this.attendanceForm = this.formBuilder.group({
-      date: ['', Validators.required],
+    this.reportsForm = this.formBuilder.group({
+      date: [this.monthOption, Validators.required],
       student: [[], Validators.required],
       subject: [this.subjects, Validators.required]
     });

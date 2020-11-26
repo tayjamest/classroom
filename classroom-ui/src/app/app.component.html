@@ -93,11 +93,13 @@
         <div class="row">
           <button type="button" class="btn btn-primary btn-lg btn-block" (click)="registerStudent()">Register student</button>
           <button type="button" class="btn btn-primary btn-lg btn-block" (click)="attendance()">Registration</button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">Reports</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="reports()">Reports</button>
         </div>
       </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="col-md-8" style="padding-right: 30px; padding-left: 0; margin-left: 0;">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 

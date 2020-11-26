@@ -21,5 +21,7 @@ export class AppComponent {
     this.router.navigate(['attendance']);
   }
 
-
+  public reports(): void {
+    this.router.navigate(['reports']);
+  }
 }

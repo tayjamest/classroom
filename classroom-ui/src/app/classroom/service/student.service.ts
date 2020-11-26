@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Subject} from "./subject";
 import {Attendance} from "./attendance";
+import {Report} from "./report";
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,14 @@ export class StudentService {
       headers: new HttpHeaders()
         .set('Accept', 'application/vnd.classroom.students-v1.0+json')
         .set('Content-Type', 'application/vnd.classroom.students-v1.0+json'),
+    });
+  }
+
+  public getReport(report: Report): Observable<Report> {
+    return this.httpClient.post<Report>(this.addStudentUrl + 'report', report, {
+      headers: new HttpHeaders()
+        .set('Accept', 'application/vnd.classroom.report-v1.0+json')
+        .set('Content-Type', 'application/vnd.classroom.report-v1.0+json'),
     });
   }
 

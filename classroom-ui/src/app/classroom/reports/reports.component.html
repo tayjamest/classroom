@@ -1,0 +1,104 @@
+<div class="container">
+  <h2>Reporting: </h2>
+  <hr>
+  <form
+    id="reportsForm"
+    [formGroup]="reportsForm"
+  >
+
+    <div class="form-group row">
+      <div class="col-md-4 h-auto">
+        <label for="subject"> Subject: </label>
+      </div>
+      <div class="col-md-8">
+        <ngx-bootstrap-multiselect *ngIf="subjectOption.length > 0" formControlName="subject" id="subject"
+                                   [options]="subjectOption" [settings]="dropdownSetting"></ngx-bootstrap-multiselect>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-4 h-auto">
+        <label for="date"> Month: </label>
+      </div>
+      <div class="col-md-8">
+        <ngx-bootstrap-multiselect *ngIf="monthOption.length > 0" formControlName="date" id="date"
+                                   [options]="monthOption" [settings]="dropdownSetting"></ngx-bootstrap-multiselect>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-4 h-auto">
+        <label for="student"> Student: </label>
+      </div>
+      <div class="col-md-8">
+        <ngx-bootstrap-multiselect *ngIf="studentOption.length > 0" formControlName="student" id="student"
+                                   [options]="studentOption" [settings]="dropdownSetting"></ngx-bootstrap-multiselect>
+      </div>
+    </div>
+
+    <hr>
+    <button type="submit" class="btn btn-primary" (click)="save()">Create Report</button>
+
+  </form>
+
+  <hr>
+  <div *ngIf="reportToDisplay !== undefined">
+
+    <div class="form-group row">
+      <div class="col-md-3 wbms-col-form-label">
+        Student
+      </div>
+      <span class="col-md-7 wbms-col-form-label">
+        {{
+        this.studentToDisplay.firstName
+        }}
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3 wbms-col-form-label">
+        Subject
+      </div>
+      <span class="col-md-7 wbms-col-form-label">
+        {{
+        this.subjectToDisplay.name
+        }}
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3 wbms-col-form-label">
+        Grade
+      </div>
+      <span class="col-md-7 wbms-col-form-label">
+        {{
+        this.studentToDisplay.grade
+        }}
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3 wbms-col-form-label">
+        Classes Missed
+      </div>
+      <span class="col-md-7 wbms-col-form-label">
+        {{
+        reportToDisplay.classesMissed
+        }}
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3 wbms-col-form-label">
+        Classes Attended
+      </div>
+      <span class="col-md-7 wbms-col-form-label">
+        {{
+        reportToDisplay?.classesAttended
+        }}
+      </span>
+    </div>
+
+  </div>
+</div>
+

@@ -1,6 +1,7 @@
 package com.classroom.attendance.service;
 
 import com.classroom.attendance.bo.Attendance;
+import com.classroom.attendance.controller.Report;
 import com.classroom.attendance.repository.AttendanceRepository;
 import com.classroom.student.bo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,16 @@ public class AttendanceService {
         List<Attendance> attendanceList = new ArrayList<Attendance>();
         this.attendanceRepository.findAll().iterator().forEachRemaining(attendanceList::add);
         return attendanceList;
+    }
+
+    public Report generateReport(Report report) {
+
+        List<Attendance> attendances = this.attendanceRepository.findAttendancesByStudentIdEqualsAndSubjectIdEquals(report.getStudentId(), report.getSubjectId());
+
+        report.setClassesAttended(attendances.size());
+        report.setClassesMissed(20 - attendances.size());
+
+        return report;
     }
 
 }

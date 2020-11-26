@@ -9,15 +9,17 @@ import {CommonModule} from "@angular/common";
 import {NgxBootstrapMultiselectModule} from "ngx-bootstrap-multiselect";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReportsComponent} from "./reports/reports.component";
 
 @NgModule({
-  declarations: [AddStudentComponent, AttendanceComponent],
+  declarations: [AddStudentComponent, AttendanceComponent, ReportsComponent],
   imports: [ClassroomRoutingModule, ReactiveFormsModule, BrowserAnimationsModule,
     FormsModule, HttpClientModule, BrowserModule, CommonModule, NgxBootstrapMultiselectModule, BsDatepickerModule.forRoot()],
   exports: [
     ClassroomRoutingModule,
     AddStudentComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    ReportsComponent
   ],
   providers: [],
 })
