@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ClassroomModule} from './classroom/classroom.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from "@angular/common";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ClassroomModule
+    ClassroomModule,
+    CommonModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   exports: [
   ],

@@ -16,4 +16,10 @@ export class AppComponent {
   public registerStudent(): void {
     this.router.navigate(['classroom']);
   }
+
+  public attendance(): void {
+    this.router.navigate(['attendance']);
+  }
+
+
 }

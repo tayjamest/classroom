@@ -7,13 +7,18 @@ For further reference, please consider the following sections:
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.0/gradle-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.0/gradle-plugin/reference/html/#build-image)
 
-### Additional Links
-These additional references should also help you:
+### Run Solution
+1.  in the base directory run ./gradlew bootRun
+2.  cd classroom-ui
+3.  npm install
+4.  ng serve
+5.  In your browser navigate to http://localhost:4200/
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
 ### Exclusions due to time constraints
 * Unit testing for both the angular and java app
 * Comments within code
 * Clean code tool (nglint, findbugs etc)
 * Create a more user friendly report
+* Error handling
+* Frontend validation

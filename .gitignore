@@ -45,3 +45,4 @@ out/
 
 ### VS Code ###
 .vscode/
+/classroom-ui/node_modules/
