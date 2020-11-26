@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <h2>Create new student</h2>
+  <hr>
+  <form
+    id="addStudentForm"
+    [formGroup]="addStudentForm"
+   >
+
+    <div class="form-group ">
+      <label for="firstName"> First name</label>
+      <input class="form-control" id="firstName" formControlName="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName"> Last name</label>
+      <input class="form-control" id="lastName" formControlName="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="grade"> Grade</label>
+      <input class="form-control" id="grade" formControlName="grade">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="save()">Create</button>
+
+  </form>
+</div>
